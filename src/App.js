@@ -12,17 +12,25 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      <textarea
-        className={styles.commandsText}
-        value={instructions}
-        onChange={e => setInstructions(e.target.value)}
-        spellCheck="false"
-      />
+      <div>
+        <h3>Input</h3>
+        <textarea
+          className={styles.commandsText}
+          value={instructions}
+          onChange={e => setInstructions(e.target.value)}
+          spellCheck="false"
+        />
+      </div>
 
       <div className={styles.outputs}>
-        {outputs.map(output => (
-          <div key={shortid.generate()}>{output}</div>
-        ))}
+        <h3>Report Outputs</h3>
+        <div className={styles.report}>
+          <ul>
+            {outputs.map(output => (
+              <li key={shortid.generate()}>{output}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   )
