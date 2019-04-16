@@ -1,68 +1,62 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation and running
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn install`
+
+Run this to get the packages installed. Must be run first.
+
+### `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### `yarn test`
 
-### `npm test`
+Launches the test runner.
+The tests verify the instruction validates correctly and that the actual instruction runner behaves as expected
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Assumptions made for this project
 
-### `npm run build`
+- All commands must be made in uppercase. The verifier checks for uppercase without doing any transformations itself.
+- PLACE commands beyond the first one will still place the robot in the (x, y) position and facing the specified direction like the first command.
+- REPORT command is listed in the same way as the document had specified: x,y,f
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Potential Improvements
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Split Input/Output into their own components. As the size of the project was small enough to accomodate both, this felt unnecessary. However, if another component such as a visual runner were to be added, it would be split out.
+- Runner report. Modify the runInstructions() method to also return whether each command ran, and if not - why it didn't run. The information would then be shown between the Input/Outputs.
+- Visual Runner. This was specified to be unnecessary for this project, but would be a nice to have given extra time.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Extra test done (manual)
 
-### `npm run eject`
+```
+REPORT
+PLACE 0,0,NORTH
+RIGHT
+REPORT
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+LEFT
+LEFT
+MOVE
+PLACE 5,4,NORTH
+MOVE
+REPORT
+PLACE 4,4,WEST
+REPORT
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Expected Output:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+0,0,EAST
+2,1,NORTH
+2,0,SOUTH
+4,4,WEST
+```
