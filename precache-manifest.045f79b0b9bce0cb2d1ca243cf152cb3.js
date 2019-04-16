@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/toy-robot/static/css/main.b4e61537.chunk.css"
   },
   {
-    "revision": "15cc69dc97f294c60c1a0ae573101ff5",
+    "revision": "fe17e0ac06434024eda640bccf68879e",
     "url": "/toy-robot/index.html"
   }
 ];

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/toy-robot/precache-manifest.7a3e2a804afece157142f1bf291fb106.js"
+  "/toy-robot/precache-manifest.045f79b0b9bce0cb2d1ca243cf152cb3.js"
 );
 
 workbox.clientsClaim();
