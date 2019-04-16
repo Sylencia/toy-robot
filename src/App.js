@@ -1,28 +1,25 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useState } from 'react'
+import styles from './App.module.scss'
+import { validateCommand } from './utils/Utils'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    )
-  }
+const App = () => {
+  const [commands, setCommands] = useState('')
+  return (
+    <div className={styles.app}>
+      <textarea
+        className={styles.commandsText}
+        value={commands}
+        onChange={e => setCommands(e.target.value)}
+        spellCheck="false"
+      />
+
+      {commands.split('\n').map(command => (
+        <div key={command}>
+          {command}: {validateCommand(command).toString()}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default App
