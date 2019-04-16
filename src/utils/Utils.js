@@ -92,7 +92,6 @@ export const runInstructions = instructions => {
           // Get the string based off the direction by inverting the enum
           const direction = _invert(directions)[robotInfo.direction]
           reports.push(`${robotInfo.x},${robotInfo.y},${direction}`)
-          console.log('REPORT', reports)
           break
         }
         // 0-3 represents North to West clockwise.
@@ -102,12 +101,10 @@ export const runInstructions = instructions => {
         // This could alternatively be written more explicitly with -1 and 4 being taken into account in LEFT/RIGHT instructions
         case 'LEFT': {
           robotInfo.direction = (robotInfo.direction + 4 - 1) % 4
-          console.log('LEFT', robotInfo)
           break
         }
         case 'RIGHT': {
           robotInfo.direction = (robotInfo.direction + 4 + 1) % 4
-          console.log('RIGHT', robotInfo)
           break
         }
         case 'PLACE': {
@@ -115,10 +112,9 @@ export const runInstructions = instructions => {
           const xPosInt = parseInt(xPos)
           const yPosInt = parseInt(yPos)
           if (isWithinBounds(xPosInt, yPosInt)) {
-            robotInfo.x = parseInt(xPos)
-            robotInfo.y = parseInt(yPos)
+            robotInfo.x = xPosInt
+            robotInfo.y = yPosInt
             robotInfo.direction = parseInt(directions[facing])
-            console.log('PLACE', robotInfo)
           }
 
           break
